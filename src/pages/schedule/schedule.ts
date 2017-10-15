@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { CalendarPage } from '../../pages/calendar/calendar';
+import { WorkerProvider } from '../../providers/worker/worker';
 
 /**
  * Generated class for the SchedulePage page.
@@ -16,8 +17,9 @@ import { CalendarPage } from '../../pages/calendar/calendar';
 })
 export class SchedulePage {
   date: Date;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public mCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public mCtrl: ModalController, public workerService: WorkerProvider) {
     this.date = new Date();
+    console.log(this.workerService.worker)
   }
 
   ionViewDidLoad() {
