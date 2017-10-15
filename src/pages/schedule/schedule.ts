@@ -14,8 +14,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'schedule.html',
 })
 export class SchedulePage {
-
+  date: Date;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.date = new Date();
   }
 
   ionViewDidLoad() {
