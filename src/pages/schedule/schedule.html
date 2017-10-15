@@ -7,16 +7,51 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>schedule</ion-title>
+    <ion-title>Schedule</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <div>
-    <div class="datepicker-container">
-      <ng-datepicker [(ngModel)]="date"></ng-datepicker>
-    </div>
+  <ion-fab right bottom>
+    <button ion-fab color="default" (click)="openCal()"><ion-icon name="md-calendar"></ion-icon></button>
+  </ion-fab>
+  <h1 class="date">{{date | date: 'yyyy-MM-dd'}}</h1>
+  <div padding>
+    <ion-segment [(ngModel)]="status">
+      <ion-segment-button value="jobs remaining">
+        jobs remaining
+      </ion-segment-button>
+      <ion-segment-button value="jobs completed">
+        jobs completed
+      </ion-segment-button>
+      <ion-segment-button value="job requests">
+        job requests
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+  <div [ngSwitch]="status">
+    <ion-list *ngSwitchCase="'jobs remaining'">
+      <ion-item>
+        <h1>paint floor</h1>
+        <h2>$20</h2>
+        <h2>Opp. nakki lake, mt. Abu, India</h2>
+      </ion-item>
+    </ion-list>
+    <ion-list *ngSwitchCase="'jobs completed'">
+      <ion-item>
+        <h1>paint floor</h1>
+        <h2>$20</h2>
+        <h2>Opp. nakki lake, mt. Abu, India</h2>
+      </ion-item>
+    </ion-list>
+    <ion-list *ngSwitchCase="'job requests'">
+      <ion-item>
+        <h1>paint floor</h1>
+        <h2>$20</h2>
+        <h2>Opp. nakki lake, mt. Abu, India</h2>
+      </ion-item>
+    </ion-list>
   </div>
 </ion-content>

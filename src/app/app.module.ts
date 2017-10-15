@@ -8,12 +8,14 @@ import { NgDatepickerModule } from 'ng2-datepicker';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { SchedulePage } from '../pages/schedule/schedule';
+import { CalendarPage } from '../pages/calendar/calendar';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    SchedulePage
+    SchedulePage,
+    CalendarPage
   ],
   imports: [
     BrowserModule,
@@ -24,7 +26,8 @@ import { SchedulePage } from '../pages/schedule/schedule';
   entryComponents: [
     MyApp,
     HomePage,
-    SchedulePage
+    SchedulePage,
+    CalendarPage
   ],
   providers: [
     StatusBar,
