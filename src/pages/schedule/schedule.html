@@ -20,38 +20,50 @@
   <h1 class="date">{{date | date: 'yyyy-MM-dd'}}</h1>
   <div padding>
     <ion-segment [(ngModel)]="status">
-      <ion-segment-button value="jobs remaining">
+      <ion-segment-button value="jobs_remaining">
         jobs remaining
       </ion-segment-button>
-      <ion-segment-button value="jobs completed">
+      <ion-segment-button value="jobs_completed">
         jobs completed
       </ion-segment-button>
-      <ion-segment-button value="job requests">
+      <ion-segment-button value="job_requests">
         job requests
       </ion-segment-button>
     </ion-segment>
   </div>
   <div [ngSwitch]="status">
-    <ion-list *ngSwitchCase="'jobs remaining'">
-      <ion-item>
-        <h1>paint floor</h1>
-        <h2>$20</h2>
-        <h2>Opp. nakki lake, mt. Abu, India</h2>
-      </ion-item>
+    <ion-list *ngSwitchCase="'jobs_remaining'">
+      <div *ngFor="let item of data">
+        <div *ngIf="item.status=='remaining'">
+          <ion-item *ngIf="compare_dates(compare_date, item.date)">
+            <h1>{{item.task}}</h1>
+            <h2>{{item.fees}}</h2>
+            <h2>{{item.location}}</h2>
+          </ion-item>
+        </div>
+      </div>
     </ion-list>
-    <ion-list *ngSwitchCase="'jobs completed'">
-      <ion-item>
-        <h1>paint floor</h1>
-        <h2>$20</h2>
-        <h2>Opp. nakki lake, mt. Abu, India</h2>
-      </ion-item>
+    <ion-list *ngSwitchCase="'jobs_completed'">
+      <div *ngFor="let item of data">
+        <div *ngIf="item.status=='complete'">
+          <ion-item *ngIf="compare_dates(compare_date, item.date)">
+            <h1>{{item.task}}</h1>
+            <h2>{{item.fees}}</h2>
+            <h2>{{item.location}}</h2>
+          </ion-item>
+        </div>
+      </div>
     </ion-list>
-    <ion-list *ngSwitchCase="'job requests'">
-      <ion-item>
-        <h1>paint floor</h1>
-        <h2>$20</h2>
-        <h2>Opp. nakki lake, mt. Abu, India</h2>
-      </ion-item>
+    <ion-list *ngSwitchCase="'job_requests'">
+      <div *ngFor="let item of data">
+        <div *ngIf="item.status=='request'">
+          <ion-item *ngIf="compare_dates(compare_date, item.date)">
+            <h1>{{item.task}}</h1>
+            <h2>{{item.fees}}</h2>
+            <h2>{{item.location}}</h2>
+          </ion-item>
+        </div>
+      </div>
     </ion-list>
   </div>
 </ion-content>

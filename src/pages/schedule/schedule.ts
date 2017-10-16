@@ -17,11 +17,14 @@ import { WorkerProvider } from '../../providers/worker/worker';
 })
 export class SchedulePage {
   date: Date;
+  data;
+  compare_date;
   constructor(public navCtrl: NavController, public navParams: NavParams, public mCtrl: ModalController, public workerService: WorkerProvider) {
     this.date = new Date();
+    this.compare_date = this.date.toDateString();
     console.log(this.workerService.worker)
+    this.data = this.workerService.worker;
   }
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad SchedulePage');
   }
@@ -30,8 +33,20 @@ export class SchedulePage {
     modal.onDidDismiss(data => {
       console.log(data);
       this.date = data;
+      this.compare_date = this.date.toDateString();
     });
     modal.present();
   }
 
+
+  compare_dates(today, data){
+    let first_date = new Date(today);
+    console.log(first_date);
+    let second_date = new Date(data);
+    console.log(second_date)
+    if(first_date.getTime() === second_date.getTime())
+      return true;
+    else
+      return false;
+  }
 }
